@@ -1,0 +1,23 @@
+from collections import Counter
+
+class Solution(object):
+    def frequencySort(self, s):
+        """
+        Sorts the given string in decreasing order based on the frequency of its characters.
+
+        Args:
+            s: The input string.
+
+        Returns:
+            The sorted string.
+        """
+        char_counts = Counter(s)
+        char_freq_list = [(char, count) for char, count in char_counts.items()]
+        char_freq_list.sort(key=lambda x: (-x[1], x[0]))  
+        sorted_string = ''.join([char * count for char, count in char_freq_list])
+        return sorted_string
+
+s = "tree"
+solution = Solution()
+sorted_str = solution.frequencySort(s)
+print(sorted_str)  
